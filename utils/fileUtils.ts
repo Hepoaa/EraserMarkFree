@@ -33,6 +33,13 @@ export const getMimeType = (filename: string): string | null => {
             return 'image/png';
         case 'webp':
             return 'image/webp';
+        case 'gif':
+            return 'image/gif';
+        case 'bmp':
+            return 'image/bmp';
+        case 'tiff':
+        case 'tif':
+            return 'image/tiff';
         default:
             return null;
     }

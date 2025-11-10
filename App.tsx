@@ -4,7 +4,7 @@ import { ImageUploader } from './components/ImageUploader';
 import { ImageViewer } from './components/ImageViewer';
 import { Loader } from './components/Loader';
 import { Button } from './components/Button';
-import { MagicWandIcon, DownloadIcon, ArrowPathIcon } from './components/icons';
+import { MagicWandIcon, DownloadIcon, ArrowPathIcon, EnvelopeIcon } from './components/icons';
 import { removeWatermark } from './services/geminiService';
 import { fileToBase64, getMimeType } from './utils/fileUtils';
 
@@ -22,6 +22,14 @@ export default function App() {
         setOriginalImageUrl(URL.createObjectURL(file));
         setProcessedImageUrl(null);
         setAppState('image_selected');
+        setErrorMessage('');
+    }, []);
+
+    const handleReset = useCallback(() => {
+        setOriginalImageFile(null);
+        setOriginalImageUrl(null);
+        setProcessedImageUrl(null);
+        setAppState('idle');
         setErrorMessage('');
     }, []);
 
@@ -51,14 +59,6 @@ export default function App() {
         }
     };
 
-    const handleReset = useCallback(() => {
-        setOriginalImageFile(null);
-        setOriginalImageUrl(null);
-        setProcessedImageUrl(null);
-        setAppState('idle');
-        setErrorMessage('');
-    }, []);
-
     const handleDownload = () => {
         if (!processedImageUrl || !originalImageFile) return;
         const link = document.createElement('a');
@@ -70,6 +70,13 @@ export default function App() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+    };
+
+    const handleSuggestionsClick = () => {
+        const email = 'ARAMSITOXD123@GMAIL.COM';
+        const subject = encodeURIComponent('Sugerencias para el Eliminador de Marcas de Agua AI');
+        const body = encodeURIComponent('¡Hola! Aquí tienes algunas ideas para mejorar la aplicación:\n\n');
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     };
 
     return (
@@ -137,6 +144,15 @@ export default function App() {
             </main>
 
              <footer className="w-full max-w-5xl text-center mt-8 text-slate-500 text-sm">
+                 <div className="flex justify-center items-center gap-4 mb-2">
+                    <button 
+                        onClick={handleSuggestionsClick}
+                        className="inline-flex items-center gap-2 text-slate-400 hover:text-purple-400 transition-colors"
+                    >
+                        <EnvelopeIcon className="h-5 w-5" />
+                        Enviar Sugerencias
+                    </button>
+                </div>
                 <p>Potenciado por Gemini de Google. Creado con React y Tailwind CSS.</p>
             </footer>
         </div>

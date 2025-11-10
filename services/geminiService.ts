@@ -1,12 +1,7 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 
 export async function removeWatermark(base64ImageData: string, mimeType: string): Promise<string | null> {
-    if (!process.env.API_KEY) {
-        throw new Error("API key no está configurada. Asegúrate de que la variable de entorno API_KEY esté definida.");
-    }
-    
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: '627691bc9c944ed1a1a9626e2eca3020' });
 
     const prompt = `Actúa como un editor de fotos profesional. Tu tarea es eliminar meticulosamente cualquier marca de agua, logotipo, superposición de texto y otros elementos gráficos que distraigan de la imagen proporcionada. El objetivo es producir una versión limpia de la imagen que parezca como si la marca de agua nunca hubiera existido. Por favor, asegúrate de reconstruir cuidadosamente el fondo detrás de la marca de agua para mantener la integridad y calidad originales de la imagen. No agregues ningún elemento nuevo a la imagen. Devuelve solo la imagen editada.`;
 

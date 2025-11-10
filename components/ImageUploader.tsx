@@ -47,7 +47,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) =
                 type="file"
                 id="imageUpload"
                 className="hidden"
-                accept="image/png, image/jpeg, image/webp"
+                accept="image/png, image/jpeg, image/webp, image/gif, image/bmp, image/tiff"
                 onChange={handleFileChange}
             />
             <label
@@ -64,7 +64,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) =
                     Arrastra y suelta tu imagen aquí
                 </p>
                 <p className="text-slate-400">o haz clic para seleccionar un archivo</p>
-                <p className="mt-2 text-xs text-slate-500">PNG, JPG, WEBP</p>
+                <p className="mt-2 text-xs text-slate-500">PNG, JPG, WEBP, GIF, BMP, TIFF</p>
             </label>
         </div>
     );
